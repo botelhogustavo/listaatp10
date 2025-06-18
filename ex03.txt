@@ -1,0 +1,80 @@
+
+a) Ponteiro não inicializado
+Problema: O ponteiro foi declarado, mas não recebeu nenhum endereço válido antes de ser utilizado, o que causa erro na execução.
+Solução: Associar o ponteiro a uma variável existente.
+Código:
+int aux = 32;
+int *number = &aux;
+printf("%d\n", *number);
+
+--------------------------------------------------
+
+b) Tipos incompatíveis
+Problema: Existe uma tentativa de atribuir um ponteiro de um tipo para outro de tipo diferente, o que não é permitido diretamente em C, já que float e long são tipos incompatíveis.
+Solução: Declarar ponteiros compatíveis ou utilizar casting, se necessário.
+Código:
+float num = 5.5;
+float *realPtr = &num;
+// ou
+long inteiro = 10;
+long *integerPtr = &inteiro;
+
+--------------------------------------------------
+
+c) Atribuição incorreta de endereços
+Problema: A tentativa de fazer uma variável ponteiro receber diretamente outra variável que não é ponteiro está incorreta.
+Solução: Passar o endereço da variável usando o operador &.
+Código:
+int y = 10;
+int *x = &y;
+// ou, se ambos forem ponteiros:
+int a = 5;
+int b = 10;
+int *x = &a;
+int *y = &b;
+x = y;
+
+--------------------------------------------------
+
+d) Iteração em vetor de caracteres
+Problema: O vetor de caracteres não foi devidamente inicializado.
+Solução: Declarar corretamente a string e iterar até o caractere nulo.
+Código:
+int count = 0;
+char s[] = "um array de caracteres";
+while (s[count] != '\0') {
+    printf("%c", s[count]);
+    count++;
+}
+
+--------------------------------------------------
+
+e) Uso de ponteiro genérico (void *)
+Problema: Ponteiros do tipo void não podem ser desreferenciados sem casting.
+Solução: Fazer um cast para o tipo apropriado.
+Código:
+short value = 10;
+short *numPtr = &value;
+void *genericPtr = numPtr;
+short result = *((short*)genericPtr) + 7;
+printf("%d\n", result);
+
+--------------------------------------------------
+
+f) Acesso ao valor via ponteiro
+Problema: O ponteiro não foi corretamente vinculado a uma variável.
+Solução: Atribuir o endereço da variável ao ponteiro antes de usá-lo.
+Código:
+float x = 19.34;
+float *xPtr = &x;
+printf("%.2f\n", *xPtr);
+
+--------------------------------------------------
+
+g) Ponteiro sem referência válida
+Problema: O ponteiro foi declarado, mas não aponta para nenhuma posição válida da memória.
+Solução: Inicializar o ponteiro com o endereço de uma variável existente.
+Código:
+char letra = 'L';
+char *s = &letra;
+printf("%c\n", *s);
